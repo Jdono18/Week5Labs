@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabbed Content</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<h1> Favorite Foods</h1>
+
+<div id="tabs">
+    <button data-content-id="pizza" class="tab-button">Pizza</button>
+    <button data-content-id="cheesecake" class="tab-button">Cheesecake</button>
+    <button data-content-id="sushi" class="tab-button">Sushi</button>
+</div>
+
+<div id="pizza" class="tab-content"> <h3>Pizza </h3> Pizza is awesome</div>
+<div id="cheesecake" class="tab-content"> <h3>Cheesecake </h3> Cheesecake is delicious</div>
+<div id="sushi" class="tab-content"> <h3>Sushi </h3>  Sushi is amazing</div>
+
+<script>
+
+    let buttons = document.querySelectorAll('.tab-button')
+    let tabContents = document.querySelectorAll('.tab-content')
+
+    tabContents.forEach( function(divEl){
+        divEl.style.display = 'none'
+    })
+
+    tabContents[0].style.display = 'block' // show first tab
+    buttons[0].classList.add('active')
+
+    buttons.forEach( function(button) {
+        button.addEventListener('click', function () {
+            //hide all content
+            // show the div with the content that relates to the button that was clicked.
+            tabContents.forEach(function (divEl) {
+                divEl.style.display = 'none'
+            })
+
+            buttons.forEach(function(button){
+                button.classList.remove('active')
+            })
+
+            this.classList.add('active')
+            // show the div with the content that relates to the button clicked
+            let contentId = this.getAttribute('data-content-id') // this is the element that generated the event.
+            let tabContent = document.querySelector('#' + contentId) // example #pizza
+            tabContent.style.display = 'block'
+        })
+    })
+
+</script>
+</body>
+</html>
