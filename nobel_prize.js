@@ -161,14 +161,6 @@ console.log(`The total number of 2017 Noble Prize categories were: ${num_categor
 let num_laureates = nobel_prize[0].laureates.length + nobel_prize[1].laureates.length + nobel_prize[2].laureates.length + nobel_prize[3].laureates.length + nobel_prize[4].laureates.length + nobel_prize[5].laureates.length
 console.log(`The total number of 2017 Noble Prize laureates were: ${num_laureates}`)
 
-// let nobel_prize_array = nobel_prize
-//
-// nobel_prize_array.forEach(function (category){
-//     console.log(category)
-// })
-// console.log(nobel_prize[i].category)
-//
-// for nobel_prize[i].category (let i=0; i < nobel_prize.length
 
 // for (let i=0; i< nobel_prize.length; i++) {
 //     for (let k in nobel_prize[i].category) {
@@ -188,15 +180,3 @@ for (let i = 0; i < physics_laureates_ids.length; i++){
     console.log(`The #${i+1} id for the 2017 nobel prize winner for physics was: ${physics_laureates_ids[i].id}`)
 }
 
-nobel_prize.forEach(function (laureates){
-    console.log(laureates)
-})
-nobel_prize.forEach(function(laureates, index){
-    console.log(`Laureate number ${index+1} is ${laureates}`)
-})
-
-
-// let total_laureates = nobel_prize.laureates.length
-// for (let i = 0; i < total_laureates; i++){
-//     console.log(total_laureates)
-// }

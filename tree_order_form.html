@@ -74,11 +74,9 @@
 <h2>Order Summary</h2>
 
 <p id="order-summary">
-    <!-- TODO Use JavaScript to display the order information,
-        only if all the required information is entered  -->
+    <!-- Order information displayed here.  -->
+
 </p>
-
-
 
 <script>
 
@@ -107,74 +105,55 @@
 
         let treeType = treeTypeSelect.value
 
-        // TODO get the value from the input#city
-        // TODO get the value from the input#zipcode
-
-        // TODO Validate that all six input and select elements have been completed
-        //  - check they all have a value
-
-        // TODO Validate the zipcode is in the range 55001 and 56763.
-        // to check that the zip code is in Minnesota.
-        // Make sure your script doesn't accept non-numeric input for the zip code.
-
         // Optional extra: add the class .error to any inputs with an error (and only inputs with an error)
         // to give the user visual feedback for which inputs need to be fixed or completed.
         // There's a style for input.error and select.error defined in the styles (in the head)
         // which will be applied if you give the class .error to any elements on the page.
         // Make sure you remove this class when the form is completed correctly.
 
-        let errors = []
+        let errors = []  // creates new errors array
+        const isValidZip = new RegExp('^[0-9]{5}') // new RE for 5 digit zip code
 
-        if (!name) {
+        if (!name) {  // user name validation
             errors.push('Enter name')
         }
 
-        if (!houseNumber) {
+        if (!houseNumber) {  // user house number validation
             errors.push('Enter a house number')
         }
 
-        if (!streetName){
+        if (!streetName){  // user street name validation
             errors.push('Enter a street name')
         }
 
-        if (!city){
+        if (!city){  // user city validation
             errors.push('Enter a city name')
         }
 
-        if (!zip){
+        if (!zip) {  // user zip code validation
             errors.push('Enter a zip code')
-        } else if (zip < 55001 || zip > 56763){
+
+        } else if (!isValidZip.exec(zip)) {  // 5 digits regular expression validation - no letters
+            errors.push('Enter only valid numbers for the zip code field')
+
+        } else if (zip < 55001 || zip > 56763) {  // proper zip code range validation
             errors.push('Enter a valid MN zip code (between 55001-56763)')
         }
-        if (!treeType) {
+        if (!treeType) {  // user tree selection validation
             errors.push('Choose a tree type')
         }
         console.log(errors)
-        // If a form element has not been completed, or if the data is not valid,
-        // add an error message to the errors array. (Hint: use push to add to the end of the array)
-        // Add one error message for each problem with the form.
 
-        if (errors.length > 0) {
+        if (errors.length > 0) {  // if no errors in errors array user orderSummaryParagraph will print to html
             let errorString = errors.join('\n')
-            alert(errorString)
+            alert(errorString)  // displays an alert with all error messages to be fixed before form submission
             return
         } else{
             orderSummaryParagraph.innerHTML = `Order for ${name} is being shipped to ${houseNumber} ${streetName} in ${city}, MN ${zip}.  Your order consists of one (1) ${treeType.toLowerCase()} tree.  Please allow 6-8 weeks to receive your order.`
             }
-
-
-        // TODO - If there are any errors after checking all of the input elements,
-        // display an alert with all of the error messages. (Hint: use join)
-        // and then return from this function to prevent further processing
-
-
-        // TODO - If there are no errors, use a template string to display an order
-        // summary in the order summary paragraph.
-
+        // template string printed in the order summary
 
     })
-
-
 
 </script>
 
